@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}Nova Receita{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+  <form method="post">
+    <label for="titulo">Título</label>
+    <input type="text" name="titulo" id="titulo" value="{{ request.form.get('titulo', '') }}" required>
+    <label for="categoria">Categoria</label>
+    <input type="text" name="categoria" id="categoria" value="{{ request.form.get('categoria', '') }}" placeholder="ex: sobremesa, almoço...">
+    <label for="tempo_preparo">Tempo de preparo (min)</label>
+    <input type="number" name="tempo_preparo" id="tempo_preparo" value="{{ request.form.get('tempo_preparo', '') }}">
+    <label for="ingredientes">Ingredientes</label>
+    <textarea name="ingredientes" id="ingredientes" placeholder="Liste os ingredientes...">{{ request.form.get('ingredientes', '') }}</textarea>
+    <label for="modo_preparo">Modo de preparo</label>
+    <textarea name="modo_preparo" id="modo_preparo" placeholder="Descreva o passo a passo...">{{ request.form.get('modo_preparo', '') }}</textarea>
+    <input type="submit" value="Salvar Receita">
+  </form>
+{% endblock %}

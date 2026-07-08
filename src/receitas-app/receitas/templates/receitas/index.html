@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}Receitas{% endblock %}</h1>
+  {% if g.user %}
+    <a class="action" href="{{ url_for('receitas.create') }}">Nova Receita</a>
+  {% endif %}
+{% endblock %}
+
+{% block content %}
+  {% for receita in receitas %}
+    <article class="post">
+      <header>
+        <div>
+          <h1>{{ receita['titulo'] }}</h1>
+          <p class="about">por {{ receita['username'] }} · {{ receita['categoria'] }} · {{ receita['tempo_preparo'] }} min</p>
+        </div>
+        {% if g.user and g.user['id'] == receita['author_id'] %}
+          <a class="action" href="{{ url_for('receitas.update', id=receita['id']) }}">Editar</a>
+        {% endif %}
+      </header>
+      <p class="body"><strong>Ingredientes:</strong> {{ receita['ingredientes'] }}</p>
+    </article>
+  {% endfor %}
+{% endblock %}

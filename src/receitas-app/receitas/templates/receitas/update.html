@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}Editar Receita{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+  <form method="post">
+    <label for="titulo">Título</label>
+    <input type="text" name="titulo" id="titulo"
+      value="{{ request.form.get('titulo') or receita['titulo'] }}" required>
+    <label for="categoria">Categoria</label>
+    <input type="text" name="categoria" id="categoria"
+      value="{{ request.form.get('categoria') or receita['categoria'] }}">
+    <label for="tempo_preparo">Tempo de preparo (min)</label>
+    <input type="number" name="tempo_preparo" id="tempo_preparo"
+      value="{{ request.form.get('tempo_preparo') or receita['tempo_preparo'] }}">
+    <label for="ingredientes">Ingredientes</label>
+    <textarea name="ingredientes" id="ingredientes">{{ request.form.get('ingredientes') or receita['ingredientes'] }}</textarea>
+    <label for="modo_preparo">Modo de preparo</label>
+    <textarea name="modo_preparo" id="modo_preparo">{{ request.form.get('modo_preparo') or receita['modo_preparo'] }}</textarea>
+    <input type="submit" value="Salvar">
+  </form>
+  <hr>
+  <form action="{{ url_for('receitas.delete', id=receita['id']) }}" method="post">
+    <input class="danger" type="submit" value="Excluir receita"
+      onclick="return confirm('Tem certeza?');">
+  </form>
+{% endblock %}
