@@ -4,13 +4,23 @@ Repositório da disciplina de Programação para Internet (PPI) — 2026.
 
 ## Projetos
 
-- **tutorial/** — Tutorial oficial do Flask (blog Jardim de Flores 🌸)
+- **src/tutorial/** — Tutorial oficial do Flask (blog Jardim de Flores 🌸)
+- **src/receitas-app/** — App CRUD de receitas culinárias 🍳
 
-## Como rodar
+## Como rodar o tutorial
 
 ```bash
-cd tutorial
+cd src/tutorial
 pip install -e .
 flask --app flaskr init-db
 flask --app flaskr run --debug
+```
+
+## Como rodar o app de receitas
+
+```bash
+cd src/receitas-app
+pip install -e .
+flask --app receitas init-db
+flask --app receitas run --debug
 ```
