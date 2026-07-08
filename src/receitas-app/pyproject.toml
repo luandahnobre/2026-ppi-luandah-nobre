@@ -1,0 +1,11 @@
+[project]
+name = "receitas"
+version = "1.0.0"
+description = "App de receitas culinárias"
+dependencies = [
+    "flask",
+]
+
+[build-system]
+requires = ["flit_core<4"]
+build-backend = "flit_core.buildapi"
