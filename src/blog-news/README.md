@@ -22,3 +22,5 @@ flask --app blog_news run --debug
 - MySQL (PyMySQL)
 - Jinja2 + CSS
 
+<img width="1018" height="562" alt="image" src="https://github.com/user-attachments/assets/cd755ef4-d4c2-4cf5-967d-5970e900851d" />
+
