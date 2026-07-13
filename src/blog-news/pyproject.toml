@@ -1,0 +1,14 @@
+[project]
+name = "blog-news"
+version = "1.0.0"
+description = "Blog de notícias com Flask e MySQL"
+dependencies = [
+    "flask",
+    "pymysql",
+    "python-dotenv",
+    "cryptography",
+]
+
+[build-system]
+requires = ["flit_core<4"]
+build-backend = "flit_core.buildapi"
