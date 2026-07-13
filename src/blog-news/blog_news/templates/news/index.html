@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block header %}
+  <h1>{% block title %}Notícias{% endblock %}</h1>
+  {% if g.user %}
+    <a class="action" href="{{ url_for('news.create') }}">Nova Notícia</a>
+  {% endif %}
+{% endblock %}
+{% block content %}
+  {% for noticia in noticias %}
+    <article class="post">
+      <img src="{{ noticia['image'] }}" alt="{{ noticia['title'] }}" class="news-img">
+      <header>
+        <div>
+          <h1>{{ noticia['title'] }}</h1>
+          <p class="about">por {{ noticia['name'] }}</p>
+        </div>
+        {% if g.user and g.user['id'] == noticia['user_id'] %}
+          <a class="action" href="{{ url_for('news.update', id=noticia['id']) }}">Editar</a>
+        {% endif %}
+      </header>
+      <p class="body">{{ noticia['content'][:200] }}...</p>
+    </article>
+  {% endfor %}
+{% endblock %}

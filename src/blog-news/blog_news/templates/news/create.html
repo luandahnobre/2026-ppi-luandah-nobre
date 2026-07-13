@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block header %}<h1>{% block title %}Nova Notícia{% endblock %}</h1>{% endblock %}
+{% block content %}
+  <form method="post">
+    <label for="title">Título</label>
+    <input type="text" name="title" id="title" value="{{ request.form.get('title', '') }}" required>
+    <label for="image">URL da imagem</label>
+    <input type="text" name="image" id="image" value="{{ request.form.get('image', '') }}" required placeholder="https://...">
+    <label for="content">Conteúdo</label>
+    <textarea name="content" id="content">{{ request.form.get('content', '') }}</textarea>
+    <input type="submit" value="Publicar">
+  </form>
+{% endblock %}

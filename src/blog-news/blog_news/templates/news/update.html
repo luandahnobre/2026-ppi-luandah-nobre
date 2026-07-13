@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block header %}<h1>{% block title %}Editar Notícia{% endblock %}</h1>{% endblock %}
+{% block content %}
+  <form method="post">
+    <label for="title">Título</label>
+    <input type="text" name="title" id="title"
+      value="{{ request.form.get('title') or noticia['title'] }}" required>
+    <label for="image">URL da imagem</label>
+    <input type="text" name="image" id="image"
+      value="{{ request.form.get('image') or noticia['image'] }}">
+    <label for="content">Conteúdo</label>
+    <textarea name="content" id="content">{{ request.form.get('content') or noticia['content'] }}</textarea>
+    <input type="submit" value="Salvar">
+  </form>
+  <hr>
+  <form action="{{ url_for('news.delete', id=noticia['id']) }}" method="post">
+    <input class="danger" type="submit" value="Excluir" onclick="return confirm('Tem certeza?');">
+  </form>
+{% endblock %}
